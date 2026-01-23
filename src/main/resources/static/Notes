@@ -1,3 +1,6 @@
+"Use below command if HE console is not opening on the web"
+ .\gradlew dependencies | findstr h2console
+
 BLOGGING APP
 
 Problem Statement

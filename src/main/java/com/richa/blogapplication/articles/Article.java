@@ -1,23 +1,26 @@
 package com.richa.blogapplication.articles;
 
+import com.richa.blogapplication.commons.BaseEntity;
+import com.richa.blogapplication.users.Users;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
+import java.util.List;
+
 
 @Entity(name="article")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@Builder
-//@Data
-public class Article {
+public class Article extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String articleName;
-    String authorName;
+    String title;
+    String slug;
+    String subTitle;
+    String body;
+    @ManyToOne
+    Users author;
+
 }
