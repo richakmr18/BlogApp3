@@ -10,7 +10,11 @@ import java.util.List;
 public interface IUsersRepository extends CrudRepository<Users,Long> {
 
     List<Users> findAllByBio(String bio);
+
     Users findByBio(String bio);
-    Users findByEmail (String email);
+
+    Users findByEmail(String email);
+
+    Users findByUserName(String userName);
 
 }

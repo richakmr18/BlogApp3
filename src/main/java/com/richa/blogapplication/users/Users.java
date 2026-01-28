@@ -14,12 +14,7 @@ import lombok.*;
 @ToString
 public class Users extends BaseEntity {
 
-   //     @NonNull
- //       @Column(name="user_name", nullable = false, unique =true, length =40)
-        String username;
-
- //       @NonNull
- //       @Column(nullable = false, unique =true, length =100)
+        String userName;
         String email;
         String password;
         String authToken;

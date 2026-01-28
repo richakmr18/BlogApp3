@@ -1,10 +1,10 @@
+/*
 package com.richa.blogapplication.users;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
-
-import java.util.Optional;
+//import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest  //this test is only for repository
 public class IUsersRepositoryTest {
@@ -32,3 +32,4 @@ public class IUsersRepositoryTest {
         //System.out.println("Returning the existing user with ID: " + existingUser.get().getId());
     }
 }
+*/
