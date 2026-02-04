@@ -1,5 +1,7 @@
 package com.richa.blogapplication.users;
 
+import com.richa.blogapplication.tokens.TokenService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +12,12 @@ import java.util.List;
 public class UserController {
 
     private final UserService service;
-    public UserController (UserService service){
+    private final TokenService tokenService;
+
+    public UserController (UserService service,
+                           @Autowired TokenService tokenService){
         this.service = service;
+        this.tokenService=tokenService;
     }
 
     @GetMapping("")
@@ -29,12 +35,15 @@ public class UserController {
     @PostMapping("/login")
     ResponseEntity<Users> loginUser(@RequestBody UserLoginDTO dto){
         Users u = service.loginUser(dto.getUserName(), dto.getPassword());
+        //Do the matching of token here and verify if user is authenticated or not
         return ResponseEntity.accepted().body(u);
     }
 
     @PostMapping("/signup")
     ResponseEntity<Users> signUpUser(@RequestBody CreateUserDTO dto){
         Users u = service.createUser(dto.getUserName(), dto.getPassword(), dto.getEmail());
+        String token = tokenService.createAuthToken(dto.getUserName());
+        u.setAuthToken(token);
         return ResponseEntity.accepted().body(u);
     }
 
